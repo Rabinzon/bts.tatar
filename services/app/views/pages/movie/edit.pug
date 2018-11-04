@@ -1,0 +1,24 @@
+extends /layouts/application.pug
+
+block content
+  .container.my-5
+    .row.justify-content-md-center: .col-md-6.col-sm-12
+      +formFor(f, { url: urlFor('editMovie', f.object['uniqueName']), method: 'post', enctype: 'multipart/form-data' })
+        h1.h3.mb-3.font-weight-normal Яна фильм
+        +input(f, 'uniqueName', { label: 'uniqueName', required: true })
+        +input(f, 'title', { label: 'title', required: true })
+        +input(f, 'time', { label: 'time', required: true })
+        +input(f, 'year', { label: 'year', required: true })
+        +input(f, 'genre', { label: 'genre', required: true })
+        +input(f, 'translator', { label: 'translator', required: true })
+        +input(f, 'voice', { label: 'voice', required: true })
+        .form-group(class=(f.errors[property] && 'has-danger'))
+          label(for='category') category
+          select.custom-select(name='categoryId' id='category' required=true)
+            each category in categories
+              option(value=category.id)=category.displayName
+        img.movie-poster(src=f.object['poster'])
+        +input(f, 'poster', { as: 'file', label: 'poster', accept:'.jpg,.png'})
+        +textarea(f, 'description', {label: 'description', required: true})
+        +button(f, 'submit', 'btn-lg btn-primary btn-block')
+          | Йоклэ

@@ -1,0 +1,153 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~plyr/dist/plyr.css';
+@import "variables";
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background-image: url('/assets/images/debut_light.png');
+  background-size: 120px;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar {
+  position: relative;
+  &::after {
+    background: url('/assets/images/border.jpg') 0 -4px;
+    background-size: 85px;
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    height: 10px;
+    left: 0;
+  }
+}
+
+.movie-preview {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 65px;
+  position: relative;
+  width: 200px;
+  height: 300px;
+  text-decoration: none;
+  flex-basis: 215px;
+  flex-shrink: 0;
+  img {
+    height: 300px;
+    width: 200px;
+  }
+  p {
+    width: 200px;
+  }
+}
+
+.tabs.nav-pills {
+  .active {
+    background-color: $dark;
+  }
+}
+
+.welcome {
+  background: url('/assets/images/border.jpg');
+  background-size: 110px;
+  height: 110px;
+  width: 100%;
+}
+
+footer {
+  position: relative;
+  &::before {
+    background: url('/assets/images/border.jpg') 0 -4px;
+    background-size: 85px;
+    content: '';
+    width: 100%;
+    position: absolute;
+    top: -10px;
+    height: 10px;
+    left: 0;
+  }
+}
+
+.movie-poster {
+  width: 220px;
+  height: 330px;
+  border-radius: 4px;
+}
+
+.movie-video {
+  height: 330px;
+}
+
+.social {
+  a {
+    font-size: 18px;
+  }
+  a:hover {
+    .fa {
+      transition: color 200ms;
+    }
+    .fa-youtube {
+      color: #f92b00;
+    }
+
+    .fa-vk {
+      color: #fff;
+    }
+  }
+}
+
+.donation-link {
+  animation: heart 2s infinite;
+  svg {
+    color: #ff3925;
+  }
+
+  &:hover {
+    animation: none;
+    transform: scale(1.3);
+    transition: 200ms;
+  }
+}
+
+@keyframes heart {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  to {
+    transform: scale(.9);
+  }
+}
+
+.navbar-brand {
+  svg {
+    font-size: 24px;
+  }
+}
+
+.book {
+  width: 224px;
+  img {
+    height: 300px;
+    width: 220px;
+    margin: auto;
+  }
+
+}
+
+@media (max-width: 780px) {
+  .nav-wrapper {
+    .container {
+      max-width: 100%;
+    }
+  }
+}

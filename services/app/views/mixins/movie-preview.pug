@@ -1,0 +1,21 @@
+mixin movie-preview(props)
+  .movie-preview.position-relative
+    .p-1.d-flex.position-absolute
+      if isSignedIn()
+        form(
+          method="POST"
+          action=urlFor('deleteMovie', props.uniqueName, {query: '_method=delete'})
+          data-confirm=`Are you sure you want delete ${props.uniqueName}?`
+        )
+          button.mr-1.btn.btn-danger(type='submit'): i.fas.fa-trash
+        a(href=urlFor('editMovie', props.uniqueName)).btn.btn-secondary.mr-1: i.fas.fa-edit
+        if props.isDraft
+          form(
+            method="POST"
+            action=urlFor('publishMovie', props.uniqueName)
+            data-confirm=`Are you sure you want publish ${props.uniqueName}?`
+          )
+            button.mr-1.btn.btn-success(type='submit'): i.fas.fa-upload
+    a(href=urlFor('movie', props.uniqueName))
+      img.img-fluid(src=props.poster || props.img)
+      p.p-1.text-center!=props.title

@@ -1,0 +1,53 @@
+extends /layouts/application.pug
+
+block content
+
+  .container.mt-4.pt-4
+    .row
+      .col-lg-3.col-md-4.col-12.mr-4
+        .d-flex
+          img(src=movie.poster).movie-poster.mb-3
+        div(style="font-size: 14px")
+          p.mb-1
+            strong Дәвамы:&nbsp;
+            span=movie.time
+            span &nbsp;мин
+          p.mb-1
+            strong Чыгу елы:&nbsp;
+            span=movie.year
+          p.mb-1
+            strong Жанр:&nbsp;
+            span=movie.genre
+          p.mb-1
+            strong Тавышлау:&nbsp;
+            span=movie.voice
+          p.mb-1
+            strong Тәрҗемә:&nbsp;
+            span=movie.translator
+
+        div.d-md-block.d-none!='<div id="vk_groups" data-reactid="46" style="width: 200px; height: 261px; background: none;"><iframe name="fXDfc4a6" frameborder="0" src="https://vk.com/widget_community.php?app=6107479&amp;width=200px&amp;_ver=1&amp;gid=103021137&amp;mode=3&amp;color1=&amp;color2=&amp;color3=&amp;class_name=&amp;url=http%3A%2F%2Fbts.tatar%2F&amp;referrer=&amp;title=%D0%91%D0%B5%D0%B7%D0%BD%D0%B5%D2%A3%20%D1%82%D3%99%D2%97%D1%80%D0%B8%D0%B1%D3%99&amp;166051ea6ba" width="200" height="185" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 261px;"></iframe></div>'
+
+      .col-lg-8.col-md-7.col-12
+        h1!=movie.title
+        p=movie.description
+        video#player.movie-video.w-100(preload="none" controls crossorigin playsinline poster="/assets/images/bts.jpg" )
+          source(src=movie.video type="video/mp4")
+
+        #disqus_thread.mt-5
+
+        script.
+          var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = window.location.pathname;
+          };
+
+          (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://bts-tatar-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        noscript
+          | Please enable JavaScript to view the
+          a(href='https://disqus.com/?ref_noscript') comments powered by Disqus.
+

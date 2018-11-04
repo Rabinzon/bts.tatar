@@ -1,0 +1,29 @@
+mixin book(props)
+  .card.m-1.mb-4.book
+    img.card-img-top(
+      src=props.bucketUrl + props.poster
+      alt=props.title
+    )
+    hr.mx-3
+    .card-body.p-3
+      small.text-muted=props.author
+      h6.card-title=props.title
+
+      p.card-text.mb-1
+        strong Жанр:&nbsp;
+        span=props.genre
+
+      p.card-text.mb-1
+        strong Бастырылу елы:&nbsp;
+        span=props.year
+
+      p.card-text.mb-1
+        strong Күләме:&nbsp;
+        span=props.pages
+
+      hr
+      each link in props.links
+        a(href=props.bucketUrl + link.link).badge.badge-primary.px-2.py-1.mx-1=link.type
+
+
+

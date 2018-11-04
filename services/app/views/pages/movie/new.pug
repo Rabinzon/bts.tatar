@@ -1,0 +1,23 @@
+extends /layouts/application.pug
+
+block content
+  .container.my-5
+    .row.justify-content-md-center: .col-md-6.col-sm-12
+      h1.h3.mb-3.font-weight-normal Яңа фильм 🎬
+      +formFor(f, {url: urlFor('newMovie'), method: 'post', enctype: 'multipart/form-data'})
+        +input(f, 'uniqueName', {label: 'uniqueName', required: true})
+        +input(f, 'title', {label: 'title', required: true})
+        +textarea(f, 'description', {label: 'description', required: true})
+        +input(f, 'time', {label: 'time', required: true})
+        +input(f, 'year', {label: 'year', required: true})
+        +input(f, 'genre', {label: 'genre', required: true})
+        +input(f, 'translator', {label: 'translator', required: true})
+        +input(f, 'voice', {label: 'voice', required: true})
+        .form-group(class=(f.errors[property] && 'has-danger'))
+          label(for='category') category
+          select.custom-select(name='categoryId' id='category' required=false)
+            each category in categories
+              option(value=category.id)=category.displayName
+        +input(f, 'poster', { as: 'file', label: 'poster', accept:'.jpg,.png'})
+        +button(f, 'submit', 'btn-lg btn-primary btn-block')
+          | Йөклә тизрәк давай 🚀

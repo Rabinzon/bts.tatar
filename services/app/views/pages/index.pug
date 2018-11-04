@@ -1,0 +1,36 @@
+extends /layouts/application.pug
+include  /mixins/movie-preview.pug
+include  /mixins/book.pug
+
+block content
+  .container.mt-5.w-sm-100
+    .row
+      .col-lg-3.col-md-4.col-12.position-relative
+        .position-md-sticky(top=10)
+          #v-pills-tab.nav.flex-md-column.nav-pills.tabs.mb-4(style='top: 10px' role='tablist' aria-orientation='vertical')
+            a#v-pills-all-tab.nav-link.active(data-toggle='pill' href='#v-pills-all' role='tab' aria-controls='v-pills-all' aria-selected='true') Бөтенесе
+            each category in categories || []
+              a.nav-link(
+                data-toggle='pill'
+                id=`v-pills-${category.name}-tab`
+                href=`#v-pills-${category.name}` role='tab'
+                aria-controls=`v-pills-${category.name}`
+                aria-selected='true'
+              )!=category.displayName
+
+          div.d-md-block.d-none!='<div id="vk_groups" data-reactid="46" style="width: 200px; height: 261px; background: none;"><iframe name="fXDfc4a6" frameborder="0" src="https://vk.com/widget_community.php?app=6107479&amp;width=200px&amp;_ver=1&amp;gid=103021137&amp;mode=3&amp;color1=&amp;color2=&amp;color3=&amp;class_name=&amp;url=http%3A%2F%2Fbts.tatar%2F&amp;referrer=&amp;title=%D0%91%D0%B5%D0%B7%D0%BD%D0%B5%D2%A3%20%D1%82%D3%99%D2%97%D1%80%D0%B8%D0%B1%D3%99&amp;166051ea6ba" width="200" height="185" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 261px;"></iframe></div>'
+      .col-lg-9.col-md-8.col-12
+        #v-pills-tabContent.tab-content
+          .tab-pane.active(id='v-pills-all' role='tabpanel' aria-labelledby='v-pills-all')
+            h3.mb-4=`${movies.length} фильм`
+            .d-flex.flex-wrap
+              each movie in _.reverse(_.sortBy(movies, 'createdAt')) || []
+                +movie-preview(movie)
+          - const categoryMovies = _.groupBy(movies, 'categoryId');
+          each category in categories || []
+            .tab-pane(id=`v-pills-${category.name}` role='tabpanel' aria-labelledby=`v-pills-${category.name}-tab`)
+              - const innerMovies = _.reverse(_.sortBy(categoryMovies[category.id], 'createdAt'))  || []
+              h3.mb-4!=innerMovies.length + ' фильм'
+              .d-flex.flex-wrap
+                each movie in innerMovies || []
+                  +movie-preview(movie)

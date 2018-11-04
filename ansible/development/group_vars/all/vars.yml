@@ -1,0 +1,3 @@
+bts_tatar_port: 4000
+node_env: development
+bts_tatar_env_file: ../.env

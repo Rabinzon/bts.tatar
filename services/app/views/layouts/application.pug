@@ -1,0 +1,89 @@
+include /mixins/forms.pug
+
+doctype html
+html(lang="en")
+  head
+    title='Безнең тәҗрибә'
+    meta(name='description' content='Коммерциясе булмаган чит телле видеоларны татарчага тәрҗемә итеп тавышлау (озвучка), субтитрлар ясау проекты.')
+    meta(name='keywords' content='фильмы на татарском, татарча фильм, перевод на татарски, татар кино')
+    meta(property="og:title" content="Безнең тәҗрибә")
+    meta(property="og:description" content="Коммерциясе булмаган чит телле видеоларны татарчага тәрҗемә итеп тавышлау (озвучка), субтитрлар ясау проекты.")
+    meta(property="og:image" content="http://bts.tatar/assets/images/bts.jpg")
+    meta(property="og:url" content="http://bts.tatar/")
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', sizes='180x180', href='/assets/favicon/apple-touch-icon.png?v=wAXXEkEEYG')
+    link(rel='icon', type='image/png', sizes='32x32', href='/assets/favicon/favicon-32x32.png?v=wAXXEkEEYG')
+    link(rel='icon', type='image/png', sizes='16x16', href='/assets/favicon/favicon-16x16.png?v=wAXXEkEEYG')
+    link(rel='manifest', href='/assets/favicon/site.webmanifest?v=wAXXEkEEYG')
+    link(rel='mask-icon', href='/assets/favicon/safari-pinned-tab.svg?v=wAXXEkEEYG', color='#5bbad5')
+    link(rel='shortcut icon', href='/assets/favicon/favicon.ico?v=wAXXEkEEYG')
+    meta(name='msapplication-TileColor', content='#da532c')
+    meta(name='msapplication-config', content='/assets/favicon/browserconfig.xml?v=wAXXEkEEYG')
+    meta(name='theme-color', content='#ffffff')
+    script(src='/assets/main.js')
+
+  body.d-flex.flex-column.justify-content-between
+    .d-none.d-sm-block
+      .nav-wrapper
+        nav.fixed-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.py-1
+          .container
+            a.navbar-brand(href=urlFor('root'))
+              i.fas.fa-microphone-alt.mr-2
+              | Безнең тәҗрибә
+            ul.navbar-nav.flex-row
+              li.nav-item.ml-3: a.nav-link(href='/books') Китаплар
+              li.nav-item.ml-3: a.nav-link(href='/about') Безнең хакта
+              if isSignedIn()
+                li.nav-item.ml-2: a.nav-link(href=urlFor('newMovie')) Яна фильм
+                li.nav-item.ml-2: a.nav-link(href=urlFor('newBook')) Яна китап
+
+            ul.navbar-nav.social.ml-auto.flex-row
+              li.nav-item.ml-sm-3: a.nav-link(href='https://www.youtube.com/channel/UCDCaB11-PTI3dZyTBG7CylA'): i.fab.fa-youtube
+              li.nav-item.ml-sm-3: a.nav-link(href='https://vk.com/beztejribe'): i.fab.fa-vk
+              li.nav-item.ml-sm-3: a.nav-link(href='/').donation-link: i.fas.fa-heart
+
+    .d-sm-none.w-100
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href=urlFor('root'))
+          i.fas.fa-microphone-alt.mr-2
+          | Безнең тәҗрибә
+
+        button.ml-auto.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent')
+          span.navbar-toggler-icon
+
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.pl-4
+            li.nav-item: a.nav-link(href='/books') Китаплар
+            li.nav-item: a.nav-link(href='/about') Безнең хакта
+            if isSignedIn()
+              li.nav-item: a.nav-link(href=urlFor('newMovie')) Яна фильм
+
+          ul.navbar-nav.social.d-flex.flex-row.justify-content-center
+            li.nav-item.mx-2: a.nav-link.p-2(href='https://www.youtube.com/channel/UCDCaB11-PTI3dZyTBG7CylA'): i.fab.fa-youtube
+            li.nav-item.mx-2: a.nav-link.p-2(href='https://vk.com/beztejribe'): i.fab.fa-vk
+            li.nav-item.mx-2: a.nav-link.p-2(href='/').donation-link: i.fas.fa-heart
+
+    main
+      - const { msg, level = 'info' } = flash.get() || error || {}
+      if msg
+        .alert.mt-3(class='alert-' + level)= msg
+      block content
+
+      button.btn.btn-fixed.js-to-top-btn.d-none.btn-dark.btn-sm наверх
+
+    footer.footer.p-2.d-flex.align-items-center.justify-content-between.mt-5
+      p.text-right!='<!--Yandex.Metrika counter--><script type="text/javascript">(function(d,w,c){(w[c]=w[c]||[]).push(function(){try{w.yaCounter44493094=new Ya.Metrika({id:44493094,clickmap:true,trackLinks:true,accurateTrackBounce:true})}catch(e){}});var n=d.getElementsByTagName("script")[0],s=d.createElement("script"),f=function(){n.parentNode.insertBefore(s,n)};s.type="text/javascript";s.async=true;s.src="https://mc.yandex.ru/metrika/watch.js";if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",f,false)}else{f()}})(document,window,"yandex_metrika_callbacks");</script>'
+      .text-center
+        span.text-muted
+          a(href='/'): small Безнең тәҗрибә 2015 елдан башлап
+
+      .text-left
+        if isSignedIn()
+          form(
+            method="POST"
+            action=urlFor('session', {query: '_method=delete'})
+          )
+            button.btn.btn-link.p-2.px-4.text-dark: i.fas.fa-lock-open
+        else
+          a.p-2.px-4.text-dark(href=urlFor('newSession'))
+            i.fas.fa-lock

@@ -1,0 +1,8 @@
+extends /layouts/application.pug
+include  /mixins/book.pug
+
+block content
+  .container.mt-5.w-sm-100
+    .d-flex.flex-wrap.justify-content-center
+      each book in books || []
+        +book(_.extend(book, { bucketUrl: bucketUrl } ))

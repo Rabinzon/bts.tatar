@@ -1,0 +1,20 @@
+extends /layouts/application.pug
+
+block content
+  .container.my-5
+    .row.justify-content-md-center: .col-md-6.col-sm-12
+      h1.h3.mb-3.font-weight-normal Яңа китап 📖
+      +formFor(f, { url: urlFor('newBook'), method: 'post', enctype: 'multipart/form-data' })
+        +input(f, 'name', {label: 'name', required: true})
+        +input(f, 'author', {label: 'author', required: true})
+        +input(f, 'year', {label: 'year', required: true})
+        +input(f, 'genre', {label: 'genre', required: true})
+        +input(f, 'volume', {label: 'volume', required: true})
+        +input(f, 'cover', { as: 'file', label: 'cover', required: true, accept:'.jpg,.png'})
+        +input(f, 'pdf', { as: 'file', label: 'pdf', accept:'.pdf'})
+        +input(f, 'epub', { as: 'file', label: 'epub', accept:'.epub'})
+        +input(f, 'fb2', { as: 'file', label: 'fb2', accept:'.fb2'})
+        +input(f, 'txt', { as: 'file', label: 'txt', accept:'.txt'})
+        +input(f, 'mobi', { as: 'file', label: 'mobi', accept:'.mobi'})
+        +button(f, 'submit', 'btn-lg btn-primary btn-block')
+          | Йөклә тизрәк давай 🚀

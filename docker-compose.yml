@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  app:
+    env_file:
+      - ".env"
+    build:
+      context: services/app
+      dockerfile: Dockerfile.production
+    volumes:
+      - "./services/app:/usr/src/app:rw"
+    command: "make migrate seed start"
+    ports:
+      - "${BTS_TATAR_PORT}:3000"
+    networks:
+      - services
+
+    depends_on:
+      - postgres
+
+  postgres:
+    env_file:
+      - ".env"
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_DB=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - services
+
+networks:
+  services:
+    driver: bridge

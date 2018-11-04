@@ -1,0 +1,10 @@
+extends /layouts/application.pug
+
+block content
+  .row.justify-content-md-center.mt-5: .col-md-3.col-sm-8
+    +formFor(f, { url: urlFor('session'), method: 'post' })
+      h1.h3.mb-3.font-weight-normal Ә син сер сузне беләсеңме?
+      +input(f, 'email', { as: '', required: true })
+      +input(f, 'password', { as: 'password', required: true })
+      +button(f, 'submit', 'btn-lg btn-primary btn-block')
+        | Беләм
