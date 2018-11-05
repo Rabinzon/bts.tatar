@@ -18,37 +18,17 @@
         force: yes
       tags: [app]
 
-    - name: download postgres
-      docker_image:
-        name: postgres
-        force: yes
-      tags: [postgres]
-
-    - name: start postgres
-      docker_container:
-        recreate: yes
-        name: postgres
-        image: postgres
-        state: started
-        restart_policy: always
-        env_file: "{{ bts_tatar_env_file }}"
-        networks:
-          - name: "{{ bts_tatar_docker_network }}"
-      tags: [postgres]
-
     - name: start app
       docker_container:
         recreate: yes
         name: app
         image: "{{ bts_tatar_docker_image }}"
         state: started
-        command: make server
+        command: npm run server
         restart_policy: always
         env_file: "{{ bts_tatar_env_file }}"
         ports:
           - "{{ bts_tatar_port }}:3000"
-        networks:
-          - name: "{{ bts_tatar_docker_network }}"
       tags: [app]
 
   post_tasks:

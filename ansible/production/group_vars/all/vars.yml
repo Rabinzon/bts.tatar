@@ -1,5 +1,5 @@
 ansible_python_interpreter: "/usr/bin/env python3"
-bts_tatar_env_file: "{{ bts_tatar_run_user_home }}/.env"
-bts_tatar_port: 80
+bts_tatar_port: 2018
 node_env: production
-bts_tatar_run_user_home: /home/admin/
+bts_tatar_run_user_home: /home/ubuntu/bts_tatar
+bts_tatar_env_file: "{{ bts_tatar_run_user_home }}/.env"

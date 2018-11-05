@@ -19,9 +19,8 @@ import addRoutes from './routes';
 import container from './container';
 
 if (process.env.NODE_ENV === 'production') {
-
+  Raven.config(process.env.SENTRY_TOKEN).install();
 }
-Raven.config(process.env.SENTRY_TOKEN).install();
 
 export default () => {
   const app = new Koa();

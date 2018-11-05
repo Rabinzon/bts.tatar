@@ -1,5 +1,5 @@
-bts_tatar_run_user_home: /home/admin
+bts_tatar_run_user_home: /home/ubuntu/
 bts_tatar_docker_network: bts_tatar_network
 bts_tatar_docker_image: "rabinzon/bts.tatar"
-bts_tatar_run_user: admin
+bts_tatar_run_user: ubuntu
 bts_tatar_domain: bts.tatar

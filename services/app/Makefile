@@ -38,6 +38,9 @@ re-seed: migration-undo seed-undo migrate seed
 server: migrate seed
 	npm run server
 
+run:
+	npm run server
+
 repl:
 	npm run repl
 
