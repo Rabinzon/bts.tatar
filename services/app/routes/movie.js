@@ -57,8 +57,8 @@ export default (router) => {
 
       const data = {
         ...body,
-        poster: `${process.env.S3_BUCKET_URL}/${body.uniqueName}/${posterFileName}`,
-        video: `${process.env.S3_BUCKET_URL}/${body.uniqueName}/${videoFileName}`,
+        poster: `${process.env.S3_BUCKET_URL}/${posterFileName}`,
+        video: `${process.env.S3_BUCKET_URL}/${videoFileName}`,
         isDraft: true,
       };
 
