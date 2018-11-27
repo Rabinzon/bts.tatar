@@ -30,6 +30,10 @@
       become: yes
 
   tasks:
+    - name: Creates directory
+      file:
+        path: "{{ bts_tatar_run_user_home }}"
+        state: directory
 
     - template:
         src: environment.j2

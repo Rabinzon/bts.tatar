@@ -21,7 +21,7 @@
     - name: start app
       docker_container:
         recreate: yes
-        name: app
+        name: bts_tatar
         image: "{{ bts_tatar_docker_image }}"
         state: started
         command: npm run server
