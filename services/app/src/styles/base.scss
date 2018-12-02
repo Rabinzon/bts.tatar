@@ -27,6 +27,15 @@ main {
   }
 }
 
+.welcome-message {
+  padding: 55px 0;
+  text-align: center;
+  width: 100%;
+  background: #E1DCD2 url(https://letsencrypt.org/images/3.jpg) no-repeat;
+  background-size: cover;
+  text-shadow: 1px 1px 1px #000;
+}
+
 .movie-preview {
   display: inline-block;
   vertical-align: top;
