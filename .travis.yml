@@ -10,8 +10,8 @@ before_install:
 
 jobs:
   include:
-  - stage: build docker image with tag
-    if: tag =~ /^v/
+  - stage: build docker image
+    if: branch=master
     script:
     - docker login -u=rabinzon -p="$DOCKER_PASS"
     - docker build -t rabinzon/bts.tatar --file services/app/Dockerfile.production services/app/

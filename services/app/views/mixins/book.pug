@@ -1,7 +1,7 @@
 mixin book(props)
   .card.m-1.mb-4.book
     img.card-img-top(
-      src=props.bucketUrl + props.poster
+      src=props.bucketUrl + '/' + props.poster
       alt=props.title
     )
     hr.mx-3
@@ -23,7 +23,7 @@ mixin book(props)
 
       hr
       each link in props.links
-        a(href=props.bucketUrl + link.link).badge.badge-primary.px-2.py-1.mx-1=link.type
+        a(href=props.bucketUrl + '/' + link.link).badge.badge-primary.px-2.py-1.mx-1=link.type
 
 
 
