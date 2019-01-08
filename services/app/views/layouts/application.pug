@@ -11,24 +11,24 @@ html(lang="en")
     meta(property="og:image" content="http://bts.tatar/assets/images/bts.jpg")
     meta(property="og:url" content="http://bts.tatar/")
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    link(rel='apple-touch-icon', sizes='180x180', href='/assets/favicon/apple-touch-icon.png?v=wAXXEkEEYG')
-    link(rel='icon', type='image/png', sizes='32x32', href='/assets/favicon/favicon-32x32.png?v=wAXXEkEEYG')
-    link(rel='icon', type='image/png', sizes='16x16', href='/assets/favicon/favicon-16x16.png?v=wAXXEkEEYG')
-    link(rel='manifest', href='/assets/favicon/site.webmanifest?v=wAXXEkEEYG')
-    link(rel='mask-icon', href='/assets/favicon/safari-pinned-tab.svg?v=wAXXEkEEYG', color='#5bbad5')
-    link(rel='shortcut icon', href='/assets/favicon/favicon.ico?v=wAXXEkEEYG')
-    meta(name='msapplication-TileColor', content='#da532c')
-    meta(name='msapplication-config', content='/assets/favicon/browserconfig.xml?v=wAXXEkEEYG')
-    meta(name='theme-color', content='#ffffff')
+
+    link(rel="apple-touch-icon", sizes="120x120", href="/assets/favicon/apple-touch-icon.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="/assets/favicon/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="/assets/favicon/favicon-16x16.png")
+    link(rel="manifest", href="/assets/favicon/site.webmanifest")
+    link(rel="mask-icon", href="/assets/favicon/safari-pinned-tab.svg", color="#5bbad5")
+    meta(name="msapplication-TileColor", content="#da532c")
+    meta(name="theme-color", content="#ffffff")
+
     script(src='/assets/main.js')
 
   body.d-flex.flex-column.justify-content-between
     .d-none.d-sm-block
       .nav-wrapper
-        nav.fixed-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.py-1
+        nav.fixed-top.navbar.navbar-expand-lg.navbar-light.py-1
           .container
             a.navbar-brand(href=urlFor('root'))
-              i.fas.fa-microphone-alt.mr-2
+              img(src='/assets/images/logo.svg')
               | Безнең тәҗрибә
             ul.navbar-nav.flex-row
               li.nav-item.ml-3: a.nav-link(href='/books') Китаплар
@@ -43,9 +43,9 @@ html(lang="en")
               li.nav-item.ml-sm-3: a.nav-link(href='https://money.yandex.ru/to/410014304147436').donation-link: i.fas.fa-heart
 
     .d-sm-none.w-100
-      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      nav.navbar.navbar-expand-lg.navbar-light
         a.navbar-brand(href=urlFor('root'))
-          i.fas.fa-microphone-alt.mr-2
+          img(src='/assets/images/logo.svg')
           | Безнең тәҗрибә
 
         button.ml-auto.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent')

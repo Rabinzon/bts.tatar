@@ -28,8 +28,8 @@ block content
       .col-lg-9.col-md-8.col-12
         #v-pills-tabContent.tab-content
           .tab-pane.active(id='v-pills-all' role='tabpanel' aria-labelledby='v-pills-all')
-            h3.mb-4=`${movies.length} фильм`
-            .d-flex.flex-wrap
+            h3.mb-4.d-none.d-sm-block=`${movies.length} фильм`
+            .d-flex.flex-wrap.justify-content-center.justify-content-sm-start
               each movie in _.reverse(_.sortBy(movies, 'createdAt')) || []
                 +movie-preview(movie)
           - const categoryMovies = _.groupBy(movies, 'categoryId');

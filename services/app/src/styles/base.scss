@@ -105,7 +105,7 @@ footer {
     }
 
     .fa-vk {
-      color: #fff;
+      color: #4391e8;
     }
   }
 }
@@ -160,3 +160,37 @@ footer {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .movie-preview {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 105px;
+    position: relative;
+    width: 140px;
+    height: 250px;
+    text-decoration: none;
+    flex-basis: 145px;
+    flex-shrink: 0;
+
+    img {
+      height: 250px;
+      width: 140px;
+    }
+    p {
+      width: 140px;
+    }
+  }
+
+}
+
+.navbar-brand img {
+  height: 30px;
+  margin-right: 8px;
+  margin-top: -3px;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
