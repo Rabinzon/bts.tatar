@@ -1,5 +1,19 @@
 export default [
   {
+    poster: 'books/Golayza/golayza.jpg',
+    title: 'Гөләйза',
+    author: 'Фәүзия Бәйрәмова',
+    genre: 'Тарихи роман',
+    year: '2018',
+    pages: 310,
+    links: [
+      { link: 'books/Golayza/golayza.txt', type: 'txt' },
+      { link: 'books/Golayza/golayza.fb2', type: 'fb2' },
+      { link: 'books/Golayza/golayza.docx', type: 'docx' },
+      { link: 'books/Golayza/golayza.epub', type: 'epub' },
+    ],
+  },
+  {
     poster: 'books/durtkyz.jpg',
     title: 'Исемем минем Дүрткүз',
     author: 'Роберт Батуллин',
