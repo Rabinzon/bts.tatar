@@ -1,5 +1,17 @@
 export default [
   {
+    poster: 'books/Harry-Potter-1/harry.jpg',
+    title: 'Һарри Поттер һәм Фәлсәфәче ташы',
+    author: 'Джоан Роулинг',
+    genre: 'Фэнтези, драма, триллер',
+    year: '1997',
+    pages: 225,
+    links: [
+      { link: 'books/Harry-Potter-1/harry.fb2', type: 'fb2' },
+      { link: 'books/Harry-Potter-1/harry.epub', type: 'epub' },
+    ],
+  },
+  {
     poster: 'books/Golayza/golayza.jpg',
     title: 'Гөләйза',
     author: 'Фәүзия Бәйрәмова',
@@ -28,7 +40,7 @@ export default [
   }, {
     poster: 'books/rab/Robi_jpg.jpg',
     title: 'Робинзон Крузо',
-    author: 'Роберт Батуллин',
+    author: 'Даниель Дефо',
     genre: 'роман, балаларга, маҗаралар',
     year: '1719',
     pages: 220,
