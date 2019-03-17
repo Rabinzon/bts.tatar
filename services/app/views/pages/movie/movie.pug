@@ -8,40 +8,46 @@ block content
         .d-flex
           img(src=movie.poster).movie-poster.mb-3
         div(style="font-size: 14px")
-          p.mb-1
-            strong Дәвамы:&nbsp;
-            span=movie.time
-            span &nbsp;мин
-          p.mb-1
-            strong Чыгу елы:&nbsp;
-            span=movie.year
-          p.mb-1
-            strong Жанр:&nbsp;
-            span=movie.genre
-          p.mb-1
-            strong Тавышлау:&nbsp;
-            span=movie.voice
-          p.mb-1
-            strong Тәрҗемә:&nbsp;
-            span=movie.translator
+          if movie.time
+            p.mb-1
+              strong Дәвамы:&nbsp;
+              span=movie.time
+              span &nbsp;мин
+          if movie.year
+            p.mb-1
+              strong Чыгу елы:&nbsp;
+              span=movie.year
+          if movie.genre
+            p.mb-1
+              strong Жанр:&nbsp;
+              span=movie.genre
+          if movie.voice
+            p.mb-1
+              strong Тавышлау:&nbsp;
+              span=movie.voice
+          if movie.translator
+            p.mb-1
+              strong Тәрҗемә:&nbsp;
+              span=movie.translator
 
         div.d-md-block.d-none!='<div id="vk_groups" data-reactid="46" style="width: 200px; height: 261px; background: none;"><iframe name="fXDfc4a6" frameborder="0" src="https://vk.com/widget_community.php?app=6107479&amp;width=200px&amp;_ver=1&amp;gid=103021137&amp;mode=3&amp;color1=&amp;color2=&amp;color3=&amp;class_name=&amp;url=http%3A%2F%2Fbts.tatar%2F&amp;referrer=&amp;title=%D0%91%D0%B5%D0%B7%D0%BD%D0%B5%D2%A3%20%D1%82%D3%99%D2%97%D1%80%D0%B8%D0%B1%D3%99&amp;166051ea6ba" width="200" height="185" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 261px;"></iframe></div>'
 
       .col-lg-8.col-md-7.col-12
         h1!=movie.title
-        p=movie.description
+        if movie.description
+          p=movie.description
 
         if _.size(movie.videos)
           ul.list-unstyled
             each video, i in movie.videos || []
               li.media-body.border-bottom.mb-2
-                .h6.mt-0.mb-1.btn-link(data-toggle="modal" data-target="#exampleModal")=episodeNumbers[i] + ' серия'
+                .h6.mt-0.mb-1.btn-link(data-toggle="modal" data-target="#exampleModal")=movie.name
                 #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
                   .modal-dialog.modal-lg(role='document')
                     .modal-content
                       .modal-body
                         video#player.movie-video.w-100(preload="none" controls crossorigin playsinline poster="/assets/images/bts.jpg" )
-                          source(src=video.src type="video/mp4")
+                          source(src=video.url type="video/mp4")
                       .modal-footer
                         button.btn.btn-secondary(type='button' data-dismiss='modal') Close
 
