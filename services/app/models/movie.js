@@ -45,6 +45,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
+    models.Movie.hasMany(models.Video, { as: 'videos' });
   };
 
   return Movie;

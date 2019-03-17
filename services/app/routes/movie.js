@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Movie, Category } from '../models';
+import { Movie, Category, Video } from '../models';
 import buildFormObj from '../lib/formObjectBuilder';
 import requiredAuth from '../lib/requiredAuth';
 import uploadFile from '../lib/uploadFile';
@@ -35,7 +35,14 @@ export default (router) => {
     })
     .get('movie', '/movie/:id', async (ctx) => {
       const { id } = ctx.params;
-      const movie = await Movie.findOne({ where: { uniqueName: id } });
+      const movie = await Movie.findOne({
+        where: { uniqueName: id },
+        include: [{
+          model: Video,
+          as: 'videos',
+        },
+        ],
+      });
 
       ctx.render('pages/movie/movie', { movie });
     })

@@ -1,7 +1,7 @@
 extends /layouts/application.pug
 
 block content
-
+  - var episodeNumbers = ['Беренче', 'Икенче', 'Оченче', 'Дуртенче', 'Бишенче', 'Алтынчы', 'Жиденче', 'Сигезенче', 'Тугызынчы', 'Унынчы']
   .container.mt-4.pt-4
     .row
       .col-lg-3.col-md-4.col-12.mr-4
@@ -30,8 +30,26 @@ block content
       .col-lg-8.col-md-7.col-12
         h1!=movie.title
         p=movie.description
-        video#player.movie-video.w-100(preload="none" controls crossorigin playsinline poster="/assets/images/bts.jpg" )
-          source(src=movie.video type="video/mp4")
+
+        if _.size(movie.videos)
+          ul.list-unstyled
+            each video, i in movie.videos || []
+              li.media-body.border-bottom.mb-2
+                .h6.mt-0.mb-1.btn-link(data-toggle="modal" data-target="#exampleModal")=episodeNumbers[i] + ' серия'
+                #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                  .modal-dialog.modal-lg(role='document')
+                    .modal-content
+                      .modal-body
+                        video#player.movie-video.w-100(preload="none" controls crossorigin playsinline poster="/assets/images/bts.jpg" )
+                          source(src=video.src type="video/mp4")
+                      .modal-footer
+                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+
+                p.text-muted=video.description
+
+        else
+          video#player.movie-video.w-100(preload="none" controls crossorigin playsinline poster="/assets/images/bts.jpg" )
+            source(src=movie.video type="video/mp4")
 
         #disqus_thread.mt-5
 
