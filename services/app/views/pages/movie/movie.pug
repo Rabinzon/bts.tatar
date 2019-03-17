@@ -40,8 +40,10 @@ block content
         if _.size(movie.videos)
           ul.list-unstyled
             each video, i in movie.videos || []
-              li.media-body.border-bottom.mb-2
-                .h6.mt-0.mb-1.btn-link(data-toggle="modal" data-target="#exampleModal")=movie.name
+              li.media-body.border-bottom.mb-2.cursor-pointer(data-toggle="modal" data-target="#exampleModal")
+                span.text-muted=(i + 1) + '. '
+                .h6.d-inline.mt-0.mb-1.btn-link
+                  span!= video.name
                 #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
                   .modal-dialog.modal-lg(role='document')
                     .modal-content
