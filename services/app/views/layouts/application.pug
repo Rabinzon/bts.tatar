@@ -3,13 +3,30 @@ include /mixins/forms.pug
 doctype html
 html(lang="en")
   head
-    title='Безнең тәҗрибә'
-    meta(name='description' content='Коммерциясе булмаган чит телле видеоларны татарчага тәрҗемә итеп тавышлау (озвучка), субтитрлар ясау проекты.')
+    - const defaultTitle = 'Безнең тәҗрибә';
+    - const defaultDescription = 'Коммерциясе булмаган чит телле видеоларны татарчага тәрҗемә итеп тавышлау (озвучка), субтитрлар ясау проекты.';
+    - const title = _.get(movie, 'title') ? `🎬 ${_.get(movie, 'title')} | ${defaultTitle}` : `🎬 ${defaultTitle}`;
+    - const description = _.get(movie, 'description', defaultDescription);
+    - const image = _.get(movie, 'poster', 'http://bts.tatar/assets/images/bts.jpg');
+    - const siteUrl = 'https://bts.tatar/';
+
+    title=title
+
     meta(name='keywords' content='фильмы на татарском, татарча фильм, перевод на татарски, татар кино')
-    meta(property="og:title" content="Безнең тәҗрибә")
-    meta(property="og:description" content="Коммерциясе булмаган чит телле видеоларны татарчага тәрҗемә итеп тавышлау (озвучка), субтитрлар ясау проекты.")
-    meta(property="og:image" content="http://bts.tatar/assets/images/bts.jpg")
-    meta(property="og:url" content="http://bts.tatar/")
+    meta(name='title' content=description)
+    meta(name='description' content=description)
+    // Open Graph / Facebook
+    meta(property='og:type' content='website')
+    meta(property='og:url' content=siteUrl)
+    meta(property='og:title' content=title)
+    meta(property='og:description' content=description)
+    meta(property='og:image' content=image)
+    // Twitter
+    meta(property='twitter:url' content=siteUrl)
+    meta(property='twitter:title' content=title)
+    meta(property='twitter:description' content=description)
+    meta(property='twitter:image' content=image)
+
     meta(name='viewport' content='width=device-width, initial-scale=1')
 
     link(rel="apple-touch-icon", sizes="120x120", href="/assets/favicon/apple-touch-icon.png")
