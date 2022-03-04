@@ -13,3 +13,7 @@ jobs:
           pullRequests: true
           prWoLabels: true
           unreleased: true
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Changelog for PR
+          file_pattern: CHANGELOG.md
