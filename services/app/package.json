@@ -83,7 +83,7 @@
     "plyr": "^3.4.6",
     "raven": "^2.6.3",
     "s3-upload-stream": "^1.0.7",
-    "sequelize": "^4.38.0",
+    "sequelize": "^6.28.2",
     "sequelize-cli": "^4.0.0",
     "sequelize-fixtures": "^0.7.0",
     "style-loader": "^0.21.0",
